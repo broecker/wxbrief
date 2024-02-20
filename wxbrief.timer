@@ -1,0 +1,16 @@
+# A timer unit to trigger the wxbrief script.
+
+[Unit]
+Description=Queries and prints some NOAA SPC maps.
+Requires=wxbrief.service
+
+[Timer]
+Unit=wxbrief.service
+# Cronjob format; see https://silentlad.com/systemd-timers-oncalendar-(cron)-format-explained
+# Run the service every weekday morning at 06:30 local time.
+# Note: take care of your timezone and which maps you want to print. E.g. MST = UTC-7; so 
+# 06:30 MST = 13:30Z
+OnCalendar=Mon...Fri *-*-* 06:30:00
+
+[Install]
+WantedBy=timers.target

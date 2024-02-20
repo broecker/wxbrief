@@ -1,0 +1,12 @@
+# Runs the wxbrief timer script.
+
+[Unit]
+Description=Queries and prints some NOAA SPC maps.
+Wants=wxbrief.timer
+
+[Service]
+Type=oneshot
+ExecStart=python3 /opt/wxbrief/wxbrief.py --zulu 12 --levels 300,500,850,sfc --print /usr/bin/lp
+
+[Install]
+WantedBy=multi-user.target
